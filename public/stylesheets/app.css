@@ -1,3 +1,10 @@
-div.yc-comments {
+#yc-comments {
   margin-top: 2em;
+}
+#yc-form-body {
+  width: 30%;
+  margin: 0 auto;
+}
+#yc-form-header {
+  text-align: center;
 }

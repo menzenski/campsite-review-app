@@ -1,0 +1,25 @@
+<% include ../partials/head %>
+
+<h1 id="yc-form-header">Comment on '<%= campground.name %>'</h1>
+
+<form class="form"
+    action="/campgrounds/<%= campground._id%>/comments" method="POST">
+  <div id="yc-form-body">
+    <div class="form-group">
+        <label for="yc-comment-author">Your name</label>
+        <input type="text" class="form-control" id="yc-comment-author"
+            name="comment[author]" placeholder="John Smith">
+    </div><!-- /.form-group -->
+    <div class="form-group">
+        <label for="yc-comment-text">Your comment</label>
+        <input type="text" class="form-control" id="yc-comment-text"
+            name="comment[text]" placeholder="<%= campground.name %> is...">
+    </div><!-- /.form-group -->
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </div><!-- /.form-group -->
+    <p><a href="/campgrounds/<%= campground._id %>">Go back</a></p>
+  </div>
+</form>
+
+<% include ../partials/foot %>
