@@ -1,16 +1,19 @@
-var express = require('express');
-var app = express();
-
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/yelpcamp');
-
-var bodyParser = require('body-parser');
-
-app.use(bodyParser.urlencoded({extended: true}));
-
-app.set('view engine', 'ejs');
+var express = require('express'),
+    app = express(),
+    mongoose = require('mongoose'),
+    bodyParser = require('body-parser'),
+    seedDB = require('./seeds');
 
 var Campground = require('./models/campground');
+
+// wipe and re-seed database for testing
+seedDB();
+
+mongoose.connect('mongodb://localhost/yelpcamp');
+
+app.use(bodyParser.urlencoded({extended: true}));
+app.set('view engine', 'ejs');
+
 
 app.get('/', function(request, response) {
     response.render('landing');
