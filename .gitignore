@@ -1,3 +1,9 @@
+# VIM stuff
+*.swp
+
+# YELPCAMP stuff
+data/
+
 ### EXPRESS stuff
 # OS X stuff
 .DS_Store*
