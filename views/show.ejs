@@ -6,4 +6,16 @@
 
 <p><%= campground.description %></p>
 
+<div class="yc-comments">
+  <h3>Comments</h3>
+  <% campground.comments.forEach(function(comment) { %>
+    <div class="yc-comment">
+      <blockquote>
+        <p><%= comment.text %></p>
+        <footer><%= comment.author %></footer>
+      </blockquote>
+    </div><!-- /.yc-comment -->
+  <% }); %>
+</div><!-- /.yc-comments -->
+
 <% include partials/foot %>

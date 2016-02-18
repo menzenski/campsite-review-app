@@ -4,7 +4,8 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     seedDB = require('./seeds');
 
-var Campground = require('./models/campground');
+var Comment = require('./models/comment'),
+    Campground = require('./models/campground');
 
 // wipe and re-seed database for testing
 seedDB();
@@ -13,7 +14,6 @@ mongoose.connect('mongodb://localhost/yelpcamp');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
-
 
 app.get('/', function(request, response) {
     response.render('landing');
@@ -51,7 +51,9 @@ app.get('/campgrounds/new', function(request, response) {
 });
 
 app.get('/campgrounds/:id', function(request, response) {
-    Campground.findById(request.params.id, function(err, foundCampground) {
+    Campground.findById(request.params.id)
+              .populate('comments')
+              .exec(function(err, foundCampground) {
         if (err) {
             console.log(err);
         } else {
