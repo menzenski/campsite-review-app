@@ -8,3 +8,15 @@
 #yc-form-header {
   text-align: center;
 }
+#yc-add-comment {
+  margin-bottom: 1em;
+}
+.thumbnail .caption-full {
+  padding: 9px;
+}
+.thumbnail {
+  padding: 0;
+}
+.thumbnail img {
+  width: 100%;
+}

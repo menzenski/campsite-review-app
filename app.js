@@ -13,7 +13,7 @@ seedDB();
 mongoose.connect('mongodb://localhost/yelpcamp');
 
 app.set('view engine', 'ejs');
-app.use(express.static('public'));
+app.use(express.static('./public'));
 app.use(bodyParser.urlencoded({extended: true}));
 
 // index page
@@ -99,5 +99,5 @@ app.post('/campgrounds/:id/comments', function(request, response) {
 });
 
 app.listen(3000, function() {
-    console.log("Listening for app on port 3000");
+    console.log("Listening for YelpCamp app on port 3000.");
 });
