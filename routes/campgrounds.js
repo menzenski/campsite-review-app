@@ -55,4 +55,34 @@ router.get('/:id', function(request, response) {
     });
 });
 
+router.get('/:id/edit', function(request, response) {
+    Campground.findById(request.params.id, function(err, camp) {
+        if (err) {
+            console.log(err);
+        } else {
+            response.render('campgrounds/edit', {campground: camp});
+        }
+    });
+});
+
+router.put('/:id', function(request, response) {
+    Campground.findByIdAndUpdate(
+        request.params.id, request.body.campground, function (err, camp) {
+            if (err) {
+                console.log(err);
+            } else {
+                response.redirect('/campgrounds/' + request.params.id);
+            }
+        });
+});
+
+router.delete('/:id', function(request, response) {
+    Campground.findByIdAndRemove(request.params.id, function(err) {
+        if (err) {
+            console.log(err);
+        }
+        response.redirect('/campgrounds');
+    });
+});
+
 module.exports = router;

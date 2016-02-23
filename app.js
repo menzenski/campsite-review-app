@@ -5,6 +5,7 @@ var express = require('express'),
     LocalStrategy = require('passport-local'),
     expressSession = require('express-session'),
     bodyParser = require('body-parser'),
+    methodOverride = require('method-override');
     seedDB = require('./seeds');
 
 // models
@@ -19,13 +20,14 @@ var mainRoutes = require('./routes/main'),
     userRoutes = require('./routes/users');
 
 // wipe and re-seed database for testing
-seedDB();
+// seedDB();
 
 mongoose.connect('mongodb://localhost/yelpcamp');
 
 app.set('view engine', 'ejs');
 app.use(express.static('./public'));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride('_method'));
 app.use(expressSession({
     secret: "correct horse battery staple",
     resave: false,
