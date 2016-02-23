@@ -1,6 +1,6 @@
 var express = require('express'),
     router = express.Router(),
-    middleware = require('../middleware');
+    mw = require('../middleware');
 
 var Campground = require('../models/campground');
 
@@ -16,11 +16,11 @@ router.get('/', function(request, response) {
     });
 });
 
-router.get('/new', middleware.isLoggedIn, function(request, response) {
+router.get('/new', mw.isLoggedIn, function(request, response) {
     response.render('campgrounds/new');
 });
 
-router.post('/', middleware.isLoggedIn, function(request, response) {
+router.post('/', mw.isLoggedIn, function(request, response) {
     var name = request.body.name;
     var image = request.body.image;
     var description = request.body.description;
@@ -55,7 +55,7 @@ router.get('/:id', function(request, response) {
     });
 });
 
-router.get('/:id/edit', function(request, response) {
+router.get('/:id/edit', mw.checkCampgroundOwnership, function(request, response) {
     Campground.findById(request.params.id, function(err, camp) {
         if (err) {
             console.log(err);
@@ -65,7 +65,7 @@ router.get('/:id/edit', function(request, response) {
     });
 });
 
-router.put('/:id', function(request, response) {
+router.put('/:id', mw.checkCampgroundOwnership, function(request, response) {
     Campground.findByIdAndUpdate(
         request.params.id, request.body.campground, function (err, camp) {
             if (err) {
@@ -76,7 +76,7 @@ router.put('/:id', function(request, response) {
         });
 });
 
-router.delete('/:id', function(request, response) {
+router.delete('/:id', mw.checkCampgroundOwnership, function(request, response) {
     Campground.findByIdAndRemove(request.params.id, function(err) {
         if (err) {
             console.log(err);

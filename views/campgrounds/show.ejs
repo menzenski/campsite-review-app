@@ -21,17 +21,22 @@
           <p>
             <em>Submitted by <%= campground.author.username %></em>
           </p>
-          <form class="form-inline"
-              action="/campgrounds/<%= campground._id %>?_method=DELETE"
-              method="POST">
-            <div class="form-group">
-              <a class="btn btn-warning"
-                  href="/campgrounds/<%= campground._id %>/edit">Edit campground</a>
-            </div><!-- /.form-group -->
-            <div class="form-group">
-              <button type="submit" class="btn btn-danger">Delete campground</button>
-            </div><!-- /.form-group -->
-          </form>
+
+          <% if (currentUser && campground.author.id.equals(currentUser._id)) { %>
+            <form class="form-inline"
+                action="/campgrounds/<%= campground._id %>?_method=DELETE"
+                method="POST">
+              <div class="form-group">
+                <a class="btn btn-warning"
+                    href="/campgrounds/<%= campground._id %>/edit">Edit campground</a>
+              </div><!-- /.form-group -->
+              <div class="form-group">
+                <button type="submit"
+                    class="btn btn-danger">Delete campground</button>
+              </div><!-- /.form-group -->
+            </form>
+          <% }%>
+
         </div>
       </div><!-- /.thumbnail -->
 
