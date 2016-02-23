@@ -1,21 +1,29 @@
 <% include ../partials/head %>
 
-<h1 id="yc-form-header">Edit comment</h1>
+<div class="row">
 
-<form class="form"
-    action="/campgrounds/<%= campground_id%>/comments/<%= comment._id%>?_method=PUT"
-    method="POST">
-  <div id="yc-form-body">
-    <div class="form-group">
-        <label for="yc-comment-text">Your comment</label>
-        <input type="text" class="form-control" id="yc-comment-text"
-            name="comment[text]" value="<%= comment.text %>">
-    </div><!-- /.form-group -->
-    <div class="form-group">
-      <button type="submit" class="btn btn-primary btn-block">Submit</button>
-    </div><!-- /.form-group -->
-    <p><a href="/campgrounds/<%= campground_id %>">Go back</a></p>
-  </div>
-</form>
+  <div class="col-xs-12 col-md-8 col-md-offset-2">
+
+    <h1 id="yc-form-header">Edit comment</h1>
+
+    <form class="form"
+        action="/campgrounds/<%= campground_id%>/comments/<%= comment._id%>?_method=PUT"
+        method="POST">
+      <div id="yc-form-body">
+        <div class="form-group">
+            <label>Your comment</label>
+            <textarea class="form-control" name="comment[text]"
+                rows="5"><%= comment.text %></textarea>
+        </div><!-- /.form-group -->
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </div><!-- /.form-group -->
+        <p><a href="/campgrounds/<%= campground_id %>">Go back</a></p>
+      </div>
+    </form>
+
+  </div><!-- /.col-xs-12 .col-md-8 .col-md-offset-2 -->
+
+</div><!-- /.row -->
 
 <% include ../partials/foot %>

@@ -1,24 +1,32 @@
 <% include ../partials/head %>
 
-<h1 id="yc-form-header">Login to YelpCamp</h1>
+<div class="row">
 
-<form class="form" action="/login" method="POST">
-  <div id="yc-form-body">
-    <div class="form-group">
-        <label for="yc-user-username">Username</label>
-        <input type="text" class="form-control" id="yc-user-username"
-            name="username" placeholder="John Smith">
-    </div><!-- /.form-group -->
-    <div class="form-group">
-        <label for="yc-user-password">Password</label>
-        <input type="password" class="form-control" id="yc-user-password"
-            name="password" placeholder="Password">
-    </div><!-- /.form-group -->
-    <div class="form-group">
-      <button type="submit" class="btn btn-primary btn-block">Submit</button>
-    </div><!-- /.form-group -->
-    <p><a href="/">Home</a></p>
-  </div>
-</form>
+  <div class="col-xs-12 col-md-8 col-md-offset-2">
+
+    <h1 id="yc-form-header">Login to YelpCamp</h1>
+
+    <form class="form" action="/login" method="POST">
+      <div id="yc-form-body">
+        <div class="form-group">
+            <label for="yc-user-username">Username</label>
+            <input type="text" class="form-control" id="yc-user-username"
+                name="username" placeholder="John Smith">
+        </div><!-- /.form-group -->
+        <div class="form-group">
+            <label for="yc-user-password">Password</label>
+            <input type="password" class="form-control" id="yc-user-password"
+                name="password" placeholder="Password">
+        </div><!-- /.form-group -->
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </div><!-- /.form-group -->
+        <p><a href="/">Home</a></p>
+      </div>
+    </form>
+
+</div><!-- /.col-xs-12 .col-md-8 .col-md-offset-2 -->
+
+</div><!-- /.row -->
 
 <% include ../partials/foot %>

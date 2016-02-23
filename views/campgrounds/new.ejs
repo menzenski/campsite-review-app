@@ -1,30 +1,39 @@
 <% include ../partials/head %>
 
-<h1 id="yc-form-header">Add a new campground</h1>
+<div class="row">
 
-<form class="form" action="/campgrounds" method="POST">
-  <div id="yc-form-body">
-    <div class="form-group">
-        <label for="yc-new-campground-name">Campground Name</label>
-        <input type="text" class="form-control" id="yc-new-campground-name"
-            name="name" placeholder="Name">
-    </div><!-- /.form-group -->
-    <div class="form-group">
-        <label for="yc-new-campground-image">Campground Image URL</label>
-        <input type="text" class="form-control" id="yc-new-campground-image"
-            name="image" placeholder="Image URL">
-    </div><!-- /.form-group -->
-    <div class="form-group">
-        <label for="yc-new-campground-desc">Campground Description</label>
-        <input type="text" class="form-control" id="yc-new-campground-desc"
-            name="description" placeholder="Description">
-    </div><!-- /.form-group -->
-    <div class="form-group">
-      <button type="submit" class="btn btn-primary btn-block">Submit</button>
-    </div><!-- /.form-group -->
-    <p><a href="/campgrounds">Go back</a></p>
-  </div>
-</form>
+  <div class="col-xs-12 col-md-8 col-md-offset-2">
 
+    <h1 id="yc-form-header">Add a new campground</h1>
+
+    <form class="form" action="/campgrounds" method="POST">
+      <div id="yc-form-body">
+        <div class="form-group">
+            <label for="yc-new-campground-name">Campground Name</label>
+            <input type="text" class="form-control" id="yc-new-campground-name"
+                name="name" placeholder="Name">
+        </div><!-- /.form-group -->
+        <div class="form-group">
+            <label for="yc-new-campground-image">Campground Image URL</label>
+            <input type="text" class="form-control" id="yc-new-campground-image"
+                name="image" placeholder="Image URL">
+        </div><!-- /.form-group -->
+
+        <div class="form-group">
+            <label>Campground Description</label>
+            <textarea class="form-control" rows="5" name="description"
+                placeholder="Description"></textarea>
+        </div><!-- /.form-group -->
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </div><!-- /.form-group -->
+        <p><a href="/campgrounds">Go back</a></p>
+      </div>
+    </form>
+
+  </div><!-- /.col-xs-12 .col-md-8 .col-md-offset-2 -->
+
+</div><!-- /.row -->
 
 <% include ../partials/foot %>
