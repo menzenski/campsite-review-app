@@ -12,10 +12,12 @@ router.post('/register', function(request, response) {
     var newUser = new User({username: request.body.username});
     User.register(newUser, request.body.password, function(err, user) {
         if (err) {
-            console.log(err);
-            return response.render('users/new')
+            request.flash('error', err.message);
+            return response.render('users/new');
         } else {
             passport.authenticate('local')(request, response, function() {
+                request.flash('success', "New user added successfully." +
+                               "Welcome to YelpCamp, " + user.username + "!")
                 response.redirect('/campgrounds');
             });
         }
