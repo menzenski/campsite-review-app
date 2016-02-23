@@ -1,4 +1,5 @@
-var Campground = require('../models/campground');
+var Campground = require('../models/campground'),
+    Comment = require('../models/comment');
 
 module.exports = {
 
@@ -18,6 +19,23 @@ module.exports = {
                     response.redirect('back');
                 } else {
                     if (camp.author.id.equals(request.user.id)) {
+                        next();
+                    } else {
+                        response.redirect('back');
+                    }
+                }
+            });
+        }
+    },
+
+    checkCommentOwnership: function(request, response, next) {
+        if (request.isAuthenticated()) {
+            Comment.findById(request.params.comment_id, function(err, comment) {
+                if (err) {
+                    console.log(err);
+                    response.redirect('back');
+                } else {
+                    if (comment.author.id.equals(request.user.id)) {
                         next();
                     } else {
                         response.redirect('back');
