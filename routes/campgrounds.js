@@ -1,5 +1,6 @@
 var express = require('express'),
-    router = express.Router();
+    router = express.Router(),
+    middleware = require('../middleware');
 
 var Campground = require('../models/campground');
 
@@ -15,13 +16,21 @@ router.get('/', function(request, response) {
     });
 });
 
-router.post('/', function(request, response) {
+router.get('/new', middleware.isLoggedIn, function(request, response) {
+    response.render('campgrounds/new');
+});
+
+router.post('/', middleware.isLoggedIn, function(request, response) {
     var name = request.body.name;
     var image = request.body.image;
     var description = request.body.description;
     Campground.create({
         name: name,
         image: image,
+        author: {
+            id: request.user._id,
+            username: request.user.username
+        },
         description: description
         }, function(err, newCampground) {
             if (err) {
@@ -30,10 +39,6 @@ router.post('/', function(request, response) {
                 response.redirect('/campgrounds');
             }
     });
-});
-
-router.get('/new', function(request, response) {
-    response.render('campgrounds/new');
 });
 
 router.get('/:id', function(request, response) {

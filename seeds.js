@@ -38,6 +38,44 @@ var starterCampgrounds = [
         image: 'https://farm1.staticflickr.com/79/228376069_fadcc1c2e9.jpg',
         description: "Here's my camp site, I slept in a camping hammock, " +
             "the red thing is a water storage pouch."
+    },
+    {
+        name: 'Santa Elena Natural Preserve',
+        image: 'https://farm9.staticflickr.com/8497/8368726018_2b552c5a77.jpg',
+        description: 'Monteverde Cloud Forest, Costa Rica.'
+    },
+    {
+        name: 'Mosquito Creek',
+        image: 'https://farm8.staticflickr.com/7749/17924239438_f354a0131c.jpg',
+        description: ''
+    },
+    {
+        name: 'La Junta',
+        image: 'https://farm9.staticflickr.com/8691/16634402597_dc44c7cb76.jpg',
+        description: ''
+    },
+    {
+        name: 'Colorado River Campsite',
+        image: 'https://farm4.staticflickr.com/3061/2324743268_6df1a7504d.jpg',
+        description: ''
+    },
+    {
+        name: 'Lake Lillian Campsite',
+        image: 'https://farm1.staticflickr.com/370/19308022642_291bece7fa.jpg',
+        description: ''
+    },
+    {
+        name: 'Burr Point Campsite',
+        image: 'https://farm7.staticflickr.com/6211/6272469585_8a1c267b06.jpg',
+        description: ''
+    },
+    {
+        name: 'Little L.O. Trail No. 6',
+        image: 'https://farm8.staticflickr.com/7767/17984691780_f2cf441d2c.jpg',
+        description: 'One of several campsites between Geronimo Spring '+
+            'and Sycamore Creek along Little Lookout (L.O.) Trail. ' +
+            'Photograph by Deborah Lee Soltesz. Credit USDA Forest ' +
+            'Service, Coconino National Forest.'
     }
 ];
 
@@ -48,6 +86,7 @@ function seedDB() {
             console.log(err);
         } else {
             console.log("Removed all campgrounds in the database.");
+            /*
             // populate database with starter campgrounds
             starterCampgrounds.forEach(function(camp) {
                 Campground.create(camp, function(err, site) {
@@ -71,6 +110,7 @@ function seedDB() {
                     }
                 });
             });
+            */
         }
     });
 }
