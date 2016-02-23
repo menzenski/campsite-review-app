@@ -7,6 +7,7 @@ module.exports = {
         if (request.isAuthenticated()) {
             return next();
         } else {
+            request.flash('error', "You must be logged in to do that.");
             response.redirect('/login');
         }
     },
@@ -21,10 +22,15 @@ module.exports = {
                     if (camp.author.id.equals(request.user.id)) {
                         next();
                     } else {
+                        request.flash('error',
+                            "You can only edit or delete your own campgrounds.");
                         response.redirect('back');
                     }
                 }
             });
+        } else {
+            request.flash('error', "You must be logged in to do that.");
+            response.redirect('/login');
         }
     },
 
@@ -38,10 +44,15 @@ module.exports = {
                     if (comment.author.id.equals(request.user.id)) {
                         next();
                     } else {
+                        request.flash('error',
+                            "You can only edit or delete your own comments.");
                         response.redirect('back');
                     }
                 }
             });
+        } else {
+            request.flash('error', "You must be logged in to do that.");
+            response.redirect('/login');
         }
     }
 

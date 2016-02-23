@@ -1,6 +1,7 @@
 var express = require('express'),
     app = express(),
     mongoose = require('mongoose'),
+    flash = require('connect-flash'),
     passport = require('passport'),
     LocalStrategy = require('passport-local'),
     expressSession = require('express-session'),
@@ -28,6 +29,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('./public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
+app.use(flash());
 app.use(expressSession({
     secret: "correct horse battery staple",
     resave: false,
@@ -39,9 +41,11 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// pass current user through to all routes
+// pass current user and any flash messages through to all routes
 app.use(function (request, response, next) {
     response.locals.currentUser = request.user;
+    response.locals.error = request.flash('error');
+    response.locals.success = request.flash('success');
     next();
 });
 
