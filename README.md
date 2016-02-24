@@ -7,6 +7,8 @@ of campsites.
 All images in this repository are in the public domain (and thus do not
 require attribution).
 
+**This app is a work in progress.**
+
 ## Screenshots
 
 ### Landing page
