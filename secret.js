@@ -1,5 +1,5 @@
 module.exports = {
-    secret: "secret key goes here",
+    secret: "correct horse battery staple",
     resave: false,
     saveUninitialized: false
 };
