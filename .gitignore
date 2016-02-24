@@ -1,8 +1,9 @@
 # VIM stuff
 *.swp
 
-# YELPCAMP stuff
+# FOURBEARS stuff
 data/
+secret.js
 
 ### EXPRESS stuff
 # OS X stuff
