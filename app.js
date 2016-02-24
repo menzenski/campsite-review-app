@@ -56,5 +56,5 @@ app.use('/campgrounds/:id/comments/', commentRoutes);
 app.use('/', userRoutes);
 
 app.listen(3000, function() {
-    console.log("Listening for YelpCamp app on port 3000.");
+    console.log("Listening for FourBears app on port 3000.");
 });

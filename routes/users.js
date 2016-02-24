@@ -17,7 +17,7 @@ router.post('/register', function(request, response) {
         } else {
             passport.authenticate('local')(request, response, function() {
                 request.flash('success', "New user added successfully." +
-                               "Welcome to YelpCamp, " + user.username + "!")
+                               "Welcome to FourBears, " + user.username + "!")
                 response.redirect('/campgrounds');
             });
         }
