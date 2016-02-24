@@ -24,7 +24,11 @@ var mainRoutes = require('./routes/main'),
 // wipe and re-seed database for testing
 // seedDB();
 
-mongoose.connect('mongodb://localhost/yelpcamp');
+// local db
+// mongoose.connect('mongodb://localhost/yelpcamp');
+
+// db for deployment
+mongoose.connect('mongodb://Matt:easy-pretoria-draggle-eider@ds015878.mongolab.com:15878/yelpcamp');
 
 app.set('view engine', 'ejs');
 app.use(express.static('./public'));
