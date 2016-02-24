@@ -52,6 +52,19 @@ app.use('/campgrounds', campgroundRoutes);
 app.use('/campgrounds/:id/comments/', commentRoutes);
 app.use('/', userRoutes);
 
+// handle errors
+app.use(function(request, response) {
+    response.status(400);
+    response.render('404', {title: '404: File Not Found'});
+});
+app.use(function(error, request, response, next) {
+    response.status(500);
+    response.render('500', {
+        title: '500: Internal Server Error',
+        error: error
+    });
+});
+
 app.listen(3000, function() {
     console.log("Listening for FourBears app on port 3000.");
 });
