@@ -24,7 +24,8 @@ var mainRoutes = require('./routes/main'),
 // wipe and re-seed database for testing
 // seedDB();
 
-mongoose.connect(process.env.FOURBEARSDATABASEURL);
+var dbURL = process.env.FOURBEARSDATABASEURL || 'mongodb://localhost/yelpcamp';
+mongoose.connect(dbURL);
 
 app.set('view engine', 'ejs');
 app.use(express.static('./public'));
